@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6a515ca042b46044b9964615276c874, type: 3}
+  m_Name: Size 3
+  m_EditorClassIdentifier: 
+  size: 3
+  verticalSpeed: 11
+  horizontalSpeed: 2
+  boostSpeed: 4
+  sprite: {fileID: 21300000, guid: 2b743d110b9fb064aab3eb9a28faae0f, type: 3}
+  hitboxRadius: 0.77

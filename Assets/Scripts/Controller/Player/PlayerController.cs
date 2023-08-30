@@ -1,9 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : PangElement
 {
     public PlayerInputController input;
     public PlayerStateController state;
+    public PlayerAttacksController attacks;
 
     public void HandlePlayerMovement()
     {
@@ -21,7 +23,12 @@ public class PlayerController : PangElement
     {
         if (app.model.player.input.isAttacking)
         {
-            app.controller.player.state.ChangeState(app.controller.player.state.attackingState);
+            state.ChangeState(state.attackingState);
         }
+    }
+    public void InitializeAttack()
+    {
+        PlayerAttack attack = new FireballController(app.model.player.fireballPrefab);
+        attacks.SpawnAttack(attack);
     }
 }

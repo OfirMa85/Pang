@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ball
+  - Lower Bound
+  - Upper Bound
+  - Right Bound
+  - Left Bound
+  - Attack
   layers:
   - Default
   - TransparentFX
