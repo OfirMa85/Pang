@@ -1,33 +1,74 @@
+using System.Drawing;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class BallController
+public class BallController: PangElement
 {
-    public BallScriptable scriptable;
-    public BallModel model;
-    public BallView view;
+    [SerializeField] private BallModel model;
 
-    public BallController(BallsController controller, int size, int directionSign, Vector3 position, bool isFirst)
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private new CircleCollider2D collider;
+
+    public void Initialize()
     {
-        // initialize variables
-        scriptable = controller.app.model.balls.scriptables[size];
-        model = new(directionSign, controller);
-
-        GameObject prefab = controller.app.model.balls.prefab;
-
-        // spawn ball
-        GameObject obj = MonoBehaviour.Instantiate(prefab, position, Quaternion.identity, controller.app.model.balls.parent);
-
-        // update ball view
-        view = obj.GetComponent<BallView>();
-        view.OnSpawn(this);
-        if (!isFirst)
-        {
-            view.Boost();
-        }
+        InitializeHitbox();
+        Boost();
     }
 
-    public void OnUpdate()
+    private void InitializeHitbox()
     {
-        view.Move();
+        collider.radius = model.scriptable.hitboxRadius;
+    }
+
+    private void Update()
+    {
+        MoveHorizontally();
+    }
+    private void MoveHorizontally()
+    {
+        float movement = model.directionSign * model.scriptable.horizontalSpeed * Time.deltaTime;
+        transform.position += movement * Vector3.right;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Lower Bound":
+                LowerBound();
+                break;
+            case "Right Bound":
+                SideBound(-1);
+                break;
+            case "Left Bound":
+                SideBound(1);
+                break;
+            case "Attack":
+                OnHit();
+                break;
+            default:
+                break;
+        }
+    }
+    private void LowerBound()
+    {
+        // bounce up
+        rb.velocity = Vector2.up * model.scriptable.verticalSpeed;
+    }
+
+    private void SideBound(int newSign)
+    {
+        model.directionSign = newSign;
+    }
+
+    public void OnHit()
+    {
+        BallDestroyEvent.ballDestroyEvent?.Invoke(transform.position, model.scriptable.size);
+        Destroy(gameObject);
+    }
+
+    public void Boost()
+    {
+        rb.velocity = Vector2.up * model.scriptable.boostSpeed;
     }
 }

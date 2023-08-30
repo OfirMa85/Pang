@@ -1,11 +1,13 @@
-public class BallModel
-{
-    public float directionSign;
-    public BallsController controller;
+using UnityEngine;
 
-    public BallModel(float directionSign, BallsController controller)
+public class BallModel: PangElement
+{
+    [HideInInspector] public float directionSign;
+    [HideInInspector] public BallScriptable scriptable;
+
+    public void Initialize(BallScriptable scriptable, int directionSign)
     {
+        this.scriptable = scriptable;
         this.directionSign = directionSign;
-        this.controller = controller;
     }
 }

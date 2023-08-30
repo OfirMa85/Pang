@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 7179596392209235484}
   - component: {fileID: 2749020879112457018}
   - component: {fileID: 5196764380246140138}
-  - component: {fileID: -2121815691500418342}
   - component: {fileID: -1094158507272107520}
   - component: {fileID: 2488408307885687878}
+  - component: {fileID: 565585184945040822}
+  - component: {fileID: 5258814211373492556}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Attack
@@ -109,19 +110,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-2121815691500418342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950534790814602916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05312b01949f60944aaf220ba3f8f9bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  app: {fileID: 0}
 --- !u!61 &-1094158507272107520
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -194,3 +182,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &565585184945040822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950534790814602916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae5c35ced7b7e441859cf1f31f88854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  app: {fileID: 0}
+  model: {fileID: 5258814211373492556}
+--- !u!114 &5258814211373492556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950534790814602916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1237ca77df21dab47a6106c24e30a56a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  app: {fileID: 0}
+  direction: {x: 0, y: 1, z: 0}
+  speed: 7

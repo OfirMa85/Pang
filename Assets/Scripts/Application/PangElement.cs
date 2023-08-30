@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PangElement : MonoBehaviour
 {
-    // gives access to the application instance
+    [HideInInspector]
     public PangApplication app;
 
     private void Awake()

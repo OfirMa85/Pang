@@ -1,27 +1,25 @@
 using UnityEngine;
 
-public class FireballController : PlayerAttack
+public class FireballController : PangElement
 {
-    private FireballModel model;
-    private FireballView view;
+    [SerializeField] private FireballModel model;
 
-    private readonly GameObject prefab;
-
-    public FireballController(GameObject prefab)
+    public void Start()
     {
-        this.prefab = prefab;
+        transform.position = app.view.player.spriteObj.transform.position;
     }
 
-    public override void OnSpawn(PlayerAttacksController controller)
+    private void Update()
     {
-        GameObject obj = MonoBehaviour.Instantiate(prefab, controller.app.model.player.attacksParent);
-        view = obj.GetComponent<FireballView>();
-        model = new();
-
-        view.OnSpawn(this);
+        transform.position += model.speed * Time.deltaTime * model.direction;
     }
-    public override void OnUpdate(PlayerAttacksController controller)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        view.Move(model.speed, model.direction);
+        if (collision.gameObject.CompareTag("Upper Bound") ||
+            collision.gameObject.CompareTag("Ball"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

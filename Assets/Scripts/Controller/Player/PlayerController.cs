@@ -28,7 +28,6 @@ public class PlayerController : PangElement
     }
     public void InitializeAttack()
     {
-        PlayerAttack attack = new FireballController(app.model.player.fireballPrefab);
-        attacks.SpawnAttack(attack);
+        attacks.SpawnAttack();
     }
 }

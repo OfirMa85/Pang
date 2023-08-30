@@ -963,7 +963,7 @@ GameObject:
   - component: {fileID: 1261597589}
   - component: {fileID: 1261597590}
   m_Layer: 0
-  m_Name: Balls
+  m_Name: balls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

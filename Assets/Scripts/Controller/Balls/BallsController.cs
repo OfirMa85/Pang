@@ -1,68 +1,56 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BallsController : PangElement
 {
-    private readonly List<BallController> balls = new();
-
-    private void Update()
-    {
-        // update balls
-        foreach (BallController ball in balls)
-        {
-            ball.OnUpdate();
-        }
-    }
-
     private void Start()
     {
-        SpawnBall(3, 1, Vector3.zero, true);
+        SpawnBall(3, 1, Vector3.zero);
+        BallDestroyEvent.ballDestroyEvent?.AddListener(OnBallDestroy);
     }
 
-    public void SpawnBall(int size, int directionSign, Vector3 position, bool isFirst)
+    private void OnBallDestroy(Vector3 position, int size)
     {
-        // get model
-        BallScriptable model;
+        SplitBall(position , size);
+    }
+
+    public void SpawnBall(int size, int directionSign, Vector3 position)
+    {
+        GameObject ball = Instantiate(app.model.balls.prefab, position, Quaternion.identity,app.model.balls.parent);
+
+        BallController controller = ball.GetComponent<BallController>();
+        BallModel model = ball.GetComponent<BallModel>();
+        BallView view = ball.GetComponent<BallView>();
+
+        // initialize ball components
         try
         {
-            model = app.model.balls.scriptables[size];
-        } 
+            model.Initialize(app.model.balls.scriptables[size], directionSign);
+        }
         catch
         {
-            Debug.LogError("Ball Scriptable is not defined");
+            Debug.Log("Ball Scriptable Object is not defined correctly");
+            Destroy(ball);
             return;
         }
-
-        // spawn ball
-        BallController ball = new(this,
-            size, directionSign, position, isFirst);
-        balls.Add(ball);
+        controller.Initialize();
+        view.Initialize();
     }
 
-    public void DestroyBall(BallController ball)
-    {
-        // remove ball
-        int index = balls.IndexOf(ball);
-        if (index == -1)
-        {
-            return;
-        }
-        balls.Remove(ball);
-
-        SplitBall(ball);
-    }
-
-    private void SplitBall(BallController ball)
+    private void SplitBall(Vector3 position, int size)
     {
         // shrink ball
-        int newSize = ball.scriptable.size - 1;
+        int newSize = CalculateSizeAfterSplit(size);
         if (newSize < 0)
         {
             return;
         }
 
         // spawn smaller balls
-        SpawnBall(newSize, 1, ball.view.transform.position, false);
-        SpawnBall(newSize, -1, ball.view.transform.position, false);
+        SpawnBall(newSize, 1, position);
+        SpawnBall(newSize, -1, position);
+    }
+    private int CalculateSizeAfterSplit(int size)
+    {
+        return size - 1;
     }
 }
