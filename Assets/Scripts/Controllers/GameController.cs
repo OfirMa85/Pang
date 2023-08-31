@@ -16,11 +16,11 @@ public class GameController : PangElement
 
     public void StartRound()
     {
-        GameModel.pauseStack--;
+        app.model.pause.pauseStack--;
     }
 
     private void HandlePauseStack()
     {
-        Time.timeScale = GameModel.pauseStack > 0 ? 0 : 1;
+        Time.timeScale = app.model.pause.pauseStack > 0 ? 0 : 1;
     }
 }

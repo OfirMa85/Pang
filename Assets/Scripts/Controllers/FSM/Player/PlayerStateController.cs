@@ -11,7 +11,7 @@ public class PlayerStateController : PangElement
 
     private void Update()
     {
-        if (GameModel.IsPaused())
+        if (app.model.pause.IsPaused())
         {
             return;
         }

@@ -5,9 +5,19 @@ public class CountdownView : PangElement
     [SerializeField] private Animator animator;
     [SerializeField] private GameController gameController;
 
+    private void Start()
+    {
+        PauseScreenEvent.pauseScreenEvent.AddListener(PauseListener);
+    }
+
+    private void PauseListener(bool pause)
+    {
+        animator.speed = pause ? 0 : 1;
+    }
+
     public void StartCountdown()
     {
-        GameModel.pauseStack++;
+        app.model.pause.pauseStack++;
         animator.enabled = true;
     }
 

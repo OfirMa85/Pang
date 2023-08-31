@@ -17,13 +17,13 @@ public class InputController : PangElement
         {
             if (Input.GetButtonDown(entry.Value))
             {
+                InputEvents.inputDownEvent.Invoke(entry.Key);
                 Debug.Log("Pressed \"" + entry.Value + "\"");
-                model.inputActions.Add(entry.Key);
             }
             if (Input.GetButtonUp(entry.Value))
             {
+                InputEvents.inputUpEvent.Invoke(entry.Key);
                 Debug.Log("Stopped pressing \"" + entry.Value + "\"");
-                model.inputActions.Remove(entry.Key);
             }
         }
     }

@@ -7,7 +7,7 @@ public class PlayerController : PangElement
 
     public void HandlePlayerMovement()
     {
-        if (GameModel.IsPaused())
+        if (app.model.pause.IsPaused())
         {
             return;
         }
@@ -24,7 +24,7 @@ public class PlayerController : PangElement
 
     public bool HandlePlayerAttacking()
     {
-        if (GameModel.IsPaused())
+        if (app.model.pause.IsPaused())
         {
             return false;
         }
