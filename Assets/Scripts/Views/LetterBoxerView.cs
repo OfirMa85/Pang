@@ -33,7 +33,8 @@ public class LetterBoxerView : PangElement
 
     private void UpdateLetterboxing()
     {
-        if (yRatio == 0)
+        // division by 0
+        if (xRatio == 0 || yRatio == 0)
         {
             return;
         }
