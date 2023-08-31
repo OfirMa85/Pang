@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class PlayerAttacksController : PangElement
 {
     public void SpawnAttack()

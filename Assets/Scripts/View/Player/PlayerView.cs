@@ -1,9 +1,11 @@
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class PlayerView : PangElement
 {
-    public PlayerAnimationView anim;
-    public GameObject spriteObj;
+    [SerializeField] private PlayerAnimationView anim;
+    [SerializeField] private GameObject spriteObj;
+
     public void MovePlayer(Vector3 movementVectorNormal)
     {
         // calculate position
@@ -19,5 +21,15 @@ public class PlayerView : PangElement
         // apply
         spriteObj.transform.position = newPos;
         spriteObj.transform.rotation = newRotation;
+    }
+
+    public void ChangeAnimation(string animation)
+    {
+        anim.PlayAnimation(animation);
+    }
+
+    public Vector3 GetPosition()
+    {
+        return spriteObj.transform.position;
     }
 }

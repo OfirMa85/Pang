@@ -1,11 +1,9 @@
-using UnityEngine;
-
 public class PlayerAttackingState : PlayerBaseState
 {
     private readonly string stateName = "attacking";
     public override void OnEnter(PlayerStateController player)
     {
-        player.app.view.player.anim.PlayAnimation(stateName);
+        player.app.view.player.ChangeAnimation(stateName);
 
         player.app.controller.player.InitializeAttack();
     }
@@ -13,13 +11,11 @@ public class PlayerAttackingState : PlayerBaseState
     public override void OnAnimationEnd(PlayerStateController player)
     {
         // re-enter attack state
-        if (player.app.model.player.input.isAttacking)
+        if (player.app.controller.player.HandlePlayerAttacking())
         {
-            player.ChangeState(player.attackingState);
+            return;
         }
-        else // change to idle state
-        {
-            player.ChangeState(player.idleState);
-        }
+        // change to idle
+        player.ChangeState(player.idleState);
     }
 }

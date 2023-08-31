@@ -1,30 +1,40 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : PangElement
 {
-    public PlayerInputController input;
     public PlayerStateController state;
     public PlayerAttacksController attacks;
 
     public void HandlePlayerMovement()
     {
-        if (app.model.player.input.ismovingRight)
+        if (GameModel.IsPaused())
         {
-            app.view.player.MovePlayer(Vector3.right);
+            return;
         }
-        else if (app.model.player.input.ismovingLeft)
+
+        // get x movement
+        float xAxis = app.model.input.GetAxis(Axis.X);
+        if (xAxis == 0)
         {
-            app.view.player.MovePlayer(Vector3.left);
+            return;
         }
+        // move player
+        app.view.player.MovePlayer(Mathf.Sign(xAxis) * Vector3.right);
     }
 
-    public void HandlePlayerAttacking()
+    public bool HandlePlayerAttacking()
     {
-        if (app.model.player.input.isAttacking)
+        if (GameModel.IsPaused())
+        {
+            return false;
+        }
+
+        if (app.model.input.GetActionPressed(InputAction.Attack))
         {
             state.ChangeState(state.attackingState);
+            return true;
         }
+        return false;
     }
     public void InitializeAttack()
     {

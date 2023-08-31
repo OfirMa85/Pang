@@ -11,10 +11,12 @@ public class PlayerStateController : PangElement
 
     private void Update()
     {
-        if (app.model.player.currentState != null)
+        if (GameModel.IsPaused())
         {
-            app.model.player.currentState.OnUpdate(this);
+            return;
         }
+
+        app.model.player.currentState?.OnUpdate(this);
     }
 
     public void ChangeState(PlayerBaseState state)

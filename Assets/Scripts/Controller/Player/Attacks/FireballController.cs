@@ -6,7 +6,7 @@ public class FireballController : PangElement
 
     public void Start()
     {
-        transform.position = app.view.player.spriteObj.transform.position;
+        transform.position = app.view.player.GetPosition();
     }
 
     private void Update()
