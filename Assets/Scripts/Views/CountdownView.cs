@@ -17,7 +17,6 @@ public class CountdownView : PangElement
 
     public void StartCountdown()
     {
-        app.model.pause.pauseStack++;
         animator.enabled = true;
     }
 

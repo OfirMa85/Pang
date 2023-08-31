@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShootingStar : MonoBehaviour
@@ -18,12 +16,12 @@ public class ShootingStar : MonoBehaviour
 
     private void HandleMovement()
     {
-        transform.position += speed * Time.deltaTime * direction.normalized;
+        transform.position += speed * Time.unscaledDeltaTime * direction.normalized;
     }
 
     private void HandleLifetime()
     {
-        timer += Time.deltaTime;
+        timer += Time.unscaledDeltaTime;
         if (timer > lifetime)
         {
             Destroy(gameObject);

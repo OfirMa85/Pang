@@ -4,7 +4,6 @@ public class BallsController : PangElement
 {
     private void Start()
     {
-        SpawnBall(3, 1, Vector3.zero);
         BallDestroyEvent.ballDestroyEvent?.AddListener(OnBallDestroy);
     }
 

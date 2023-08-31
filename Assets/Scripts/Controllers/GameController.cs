@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class GameController : PangElement
 {
-    [SerializeField] private CountdownView countdown;
-
     private void Start()
     {
-        countdown.StartCountdown();
+        app.model.pause.pauseStack++;
+        GameStartEvent.gameStartEvent?.AddListener(GameStartListener);
+    }
+
+    private void GameStartListener()
+    {
+        app.view.countdown.StartCountdown();
+        app.controller.balls.SpawnBall(3, 1, Vector3.zero);
     }
 
     private void Update()
