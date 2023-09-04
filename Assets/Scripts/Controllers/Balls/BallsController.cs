@@ -9,13 +9,14 @@ public class BallsController : PangElement
 
     private void OnBallDestroy(Vector3 position, BallScriptable scriptable)
     {
-        SplitBall(position, scriptable);
+        int newBalls = SplitBall(position, scriptable) ? 1 : -1;
+        app.model.balls.activeBalls += newBalls;
         CheckLevelComplete();
     }
 
     private void CheckLevelComplete()
     {
-        if (app.model.balls.parent.transform.childCount - 1 == 0)
+        if (app.model.balls.activeBalls <= 0)
         {
             app.view.levelComplete.StartAnimation();
         }
@@ -44,18 +45,20 @@ public class BallsController : PangElement
         view.Initialize();
     }
 
-    private void SplitBall(Vector3 position, BallScriptable scriptable)
+    private bool SplitBall(Vector3 position, BallScriptable scriptable)
     {
         // get next ball
         BallScriptable newScriptable = scriptable.next;
         if (newScriptable == null)
         {
-            return;
+            return false;
         }
 
         // spawn smaller balls
         SpawnBall(newScriptable.size, 1, position);
         SpawnBall(newScriptable.size, -1, position);
+
+        return true;
     }
     private int CalculateSizeAfterSplit(int size)
     {

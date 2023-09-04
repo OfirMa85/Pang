@@ -23,7 +23,8 @@ public class PangApplication : MonoBehaviour
     // save and load leaderboards
     // dont show player during menus
     // fix mobile screen resolution issues
-    // 
+    // add scenes
+    // add ball pop VFX
 
 
     // OPTIONAL:

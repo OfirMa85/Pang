@@ -196,4 +196,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   app: {fileID: 0}
   directionSign: 0
+  popPrefab: {fileID: 1995822633886199511, guid: 5347e186d5060cb4eb899eb4cf6ddea2, type: 3}
   scriptable: {fileID: 0}

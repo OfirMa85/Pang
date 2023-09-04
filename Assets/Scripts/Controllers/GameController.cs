@@ -44,5 +44,6 @@ public class GameController : PangElement
         AddToPauseStack(1);
         app.view.countdown.StartCountdown();
         app.controller.balls.SpawnBall(level, 1, Vector3.zero);
+        app.model.balls.CountBalls();
     }
 }

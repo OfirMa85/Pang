@@ -64,7 +64,15 @@ public class BallController: PangElement
     public void OnHit()
     {
         BallDestroyEvent.ballDestroyEvent?.Invoke(transform.position, model.scriptable);
+        SpawnPopEffect();
         Destroy(gameObject);
+    }
+
+    private void SpawnPopEffect()
+    {
+        Vector3 pos = transform.position + (Vector3.back * 1);
+        GameObject pop = Instantiate(model.popPrefab, pos, Quaternion.identity, transform.parent);
+        pop.GetComponent<BallPop>().size = model.scriptable.size;
     }
 
     public void Boost()

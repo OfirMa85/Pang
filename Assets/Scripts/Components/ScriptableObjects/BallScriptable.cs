@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu]
+[System.Serializable]
 public class BallScriptable : ScriptableObject
 {
     [Header("Tier")]
