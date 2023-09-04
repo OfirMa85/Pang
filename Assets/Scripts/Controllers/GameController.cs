@@ -4,28 +4,45 @@ public class GameController : PangElement
 {
     private void Start()
     {
-        app.model.pause.pauseStack++;
         GameStartEvent.gameStartEvent?.AddListener(GameStartListener);
     }
 
     private void GameStartListener()
     {
-        app.view.countdown.StartCountdown();
-        app.controller.balls.SpawnBall(3, 1, Vector3.zero);
-    }
+        app.controller.score.UpdateScore(0);
 
-    private void Update()
-    {
-        HandlePauseStack();
+        int level = 1;
+        app.model.game.level = level;
+        InitializeLevel(level);
     }
 
     public void StartRound()
     {
-        app.model.pause.pauseStack--;
+        // unpause
+        AddToPauseStack(-1);
     }
 
-    private void HandlePauseStack()
+    public void AddToPauseStack(int amount)
+    {
+        app.model.pause.pauseStack += amount;
+        UpdateTimeScale();
+    }
+
+    private void UpdateTimeScale()
     {
         Time.timeScale = app.model.pause.pauseStack > 0 ? 0 : 1;
+    }
+
+    public void LevelComplete()
+    {
+        app.model.game.level++;
+        InitializeLevel(app.model.game.level);
+    }
+
+    private void InitializeLevel(int level)
+    {
+        AddToPauseStack(1);
+        app.view.countdown.StartCountdown();
+        app.controller.balls.SpawnBall(level, 1, Vector3.zero);
     }
 }

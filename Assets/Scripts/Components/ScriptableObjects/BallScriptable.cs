@@ -3,8 +3,10 @@ using UnityEngine;
 [CreateAssetMenu]
 public class BallScriptable : ScriptableObject
 {
-    [Header("Size")]
+    [Header("Tier")]
     public int size;
+    public int score;
+    public BallScriptable next;
 
     [Header("Speeds")]
     public float verticalSpeed;

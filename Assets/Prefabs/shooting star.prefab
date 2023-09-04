@@ -4898,6 +4898,7 @@ MonoBehaviour:
   direction: {x: 0.4, y: -0.5, z: 0}
   speed: 6
   lifetime: 20
+  particle: {fileID: 5387082283626738926}
 --- !u!114 &9182640334253506774
 MonoBehaviour:
   m_ObjectHideFlags: 0

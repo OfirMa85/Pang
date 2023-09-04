@@ -7,9 +7,18 @@ public class BallsController : PangElement
         BallDestroyEvent.ballDestroyEvent?.AddListener(OnBallDestroy);
     }
 
-    private void OnBallDestroy(Vector3 position, int size)
+    private void OnBallDestroy(Vector3 position, BallScriptable scriptable)
     {
-        SplitBall(position , size);
+        SplitBall(position, scriptable);
+        CheckLevelComplete();
+    }
+
+    private void CheckLevelComplete()
+    {
+        if (app.model.balls.parent.transform.childCount - 1 == 0)
+        {
+            app.view.levelComplete.StartAnimation();
+        }
     }
 
     public void SpawnBall(int size, int directionSign, Vector3 position)
@@ -27,7 +36,7 @@ public class BallsController : PangElement
         }
         catch
         {
-            Debug.Log("Ball Scriptable Object is not defined correctly");
+            Debug.LogError("Ball Scriptable Object is not defined correctly");
             Destroy(ball);
             return;
         }
@@ -35,18 +44,18 @@ public class BallsController : PangElement
         view.Initialize();
     }
 
-    private void SplitBall(Vector3 position, int size)
+    private void SplitBall(Vector3 position, BallScriptable scriptable)
     {
-        // shrink ball
-        int newSize = CalculateSizeAfterSplit(size);
-        if (newSize < 0)
+        // get next ball
+        BallScriptable newScriptable = scriptable.next;
+        if (newScriptable == null)
         {
             return;
         }
 
         // spawn smaller balls
-        SpawnBall(newSize, 1, position);
-        SpawnBall(newSize, -1, position);
+        SpawnBall(newScriptable.size, 1, position);
+        SpawnBall(newScriptable.size, -1, position);
     }
     private int CalculateSizeAfterSplit(int size)
     {

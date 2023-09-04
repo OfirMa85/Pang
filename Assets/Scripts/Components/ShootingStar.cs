@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShootingStar : MonoBehaviour
+public class ShootingStar : PangElement
 {
     public Vector3 direction;
     public float speed;
@@ -8,10 +8,13 @@ public class ShootingStar : MonoBehaviour
 
     private float timer = 0;
 
+    [SerializeField] private ParticleSystem particle;
+
     private void Update()
     {
         HandleMovement();
         HandleLifetime();
+        ManualSimulation();
     }
 
     private void HandleMovement()
@@ -26,5 +29,15 @@ public class ShootingStar : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void ManualSimulation()
+    {
+        if (!app.model.pause.IsPaused())
+        {
+            return;
+        }
+
+        particle.Simulate(Time.unscaledDeltaTime, true, false);
     }
 }

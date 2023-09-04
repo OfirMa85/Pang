@@ -3,5 +3,5 @@ using UnityEngine.Events;
 
 public class BallDestroyEvent
 {
-    public static UnityEvent<Vector3, int> ballDestroyEvent = new();
+    public static UnityEvent<Vector3, BallScriptable> ballDestroyEvent = new();
 }

@@ -63,7 +63,7 @@ public class BallController: PangElement
 
     public void OnHit()
     {
-        BallDestroyEvent.ballDestroyEvent?.Invoke(transform.position, model.scriptable.size);
+        BallDestroyEvent.ballDestroyEvent?.Invoke(transform.position, model.scriptable);
         Destroy(gameObject);
     }
 
