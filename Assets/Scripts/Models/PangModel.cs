@@ -7,4 +7,5 @@ public class PangModel : PangElement
     public MenuModel menu;
     public GameModel game;
     public ScoreModel score;
+    public MusicModel music;
 }

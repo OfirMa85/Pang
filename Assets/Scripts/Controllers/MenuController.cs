@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class MenuController : PangElement
 {
+    private void Start()
+    {
+        app.controller.music.Play(Theme.Menu);
+    }
+
     public void SwitchMenu(Menu menu)
     {
         // check for valid menu index

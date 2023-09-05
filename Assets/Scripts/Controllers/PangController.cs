@@ -7,4 +7,5 @@ public class PangController : PangElement
     public PauseController pause;
     public MenuController menu;
     public ScoreController score;
+    public MusicController music;
 }

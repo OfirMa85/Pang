@@ -23,10 +23,27 @@ public class PauseController : PangElement
     {
         // swap pause state
         model.isPauseScreenOn = !model.isPauseScreenOn;
-        // update the pause stack
-        int pauseStackAdd = model.isPauseScreenOn ? 1 : -1;
-        app.controller.game.AddToPauseStack(pauseStackAdd);
-        // invoke pause event
-        PauseScreenEvent.pauseScreenEvent.Invoke(model.isPauseScreenOn);
+        if (model.isPauseScreenOn)
+        {
+            Pause();
+        }
+        else
+        {
+            Unpause();
+        }
+    }
+
+    private void Pause()
+    {
+        app.controller.game.AddToPauseStack(1);
+        app.controller.music.Play(Theme.Pause);
+        PauseScreenEvent.pauseScreenEvent.Invoke(true);
+    }
+
+    private void Unpause()
+    {
+        app.controller.game.AddToPauseStack(-1);
+        app.controller.music.Play(Theme.Game);
+        PauseScreenEvent.pauseScreenEvent.Invoke(false);
     }
 }

@@ -1,11 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : PangElement
 {
     public void PlayButton()
     {
-        GameStartEvent.gameStartEvent.Invoke();
-        gameObject.SetActive(false);
+        SceneManager.LoadScene("Game");
     }
 
     public void SettingsButton()

@@ -1,16 +1,20 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : PangElement
 {
     private void Start()
     {
-        GameStartEvent.gameStartEvent?.AddListener(GameStartListener);
+        InitializeGame();
     }
 
-    private void GameStartListener()
+    private void InitializeGame()
     {
+        // music
+        app.controller.music.Play(Theme.Game);
+        // reset score
         app.controller.score.UpdateScore(0);
-
+        // initialize level 1
         int level = 1;
         app.model.game.level = level;
         InitializeLevel(level);

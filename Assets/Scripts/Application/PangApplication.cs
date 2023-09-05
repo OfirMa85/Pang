@@ -7,28 +7,24 @@ public class PangApplication : MonoBehaviour
     public PangController controller;
 
     // TODO:
-    // mobile controls
-    // add Settings
-    // disable settings on menu
-    // dont display score in menu
     // player hit
     // player health
-    // resume + exit buttons in pause menu
-    // level prefabs
-    // remove unnecessary references to follow MVC better
     // lose screen
-    // SFX
-    // BGM
-    // leaderboards
-    // save and load leaderboards
-    // dont show player during menus
+    // level prefabs
+    // victory screen / leaderboards
+    // mobile controls
+    // mobile pause button
+    // resume + give up buttons in pause menu
+    // remove unnecessary references to follow MVC better
     // fix mobile screen resolution issues
-    // add scenes
-    // add ball pop VFX
+    // fix level complete appearing on the screen on higher resolution
 
 
     // OPTIONAL:
-    // upgrades between each round
+    // save and load leaderboards
+    // save and load volume settings
+    // design the volume slider
+    // make score text look better
+    // upgrades
     // 2 players
-    // bubble pop effects
 }
