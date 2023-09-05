@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class PlayerView : PangElement
 {
-    [SerializeField] private PlayerAnimationView anim;
+    public PlayerAnimationView anim;
+
     [SerializeField] private GameObject spriteObj;
 
     public void MovePlayer(Vector3 movementVectorNormal)
@@ -21,11 +22,6 @@ public class PlayerView : PangElement
         // apply
         spriteObj.transform.position = newPos;
         spriteObj.transform.rotation = newRotation;
-    }
-
-    public void ChangeAnimation(string animation)
-    {
-        anim.PlayAnimation(animation);
     }
 
     public Vector3 GetPosition()

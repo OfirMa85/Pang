@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 
 public class PlayerModel : PangElement
@@ -11,6 +10,9 @@ public class PlayerModel : PangElement
     public bool drawBounds;
     public Vector2 xBounds;
     public float speed;
+    public float invincibilityDuration = 2f;
+
+    [HideInInspector] public bool invincible;
 
     private void OnDrawGizmos()
     {

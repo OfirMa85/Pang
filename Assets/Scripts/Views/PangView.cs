@@ -5,4 +5,6 @@ public class PangView : PangElement
     public MenuView menu;
     public LevelCompleteView levelComplete;
     public ScoreView score;
+    public CameraShakeView cameraShake;
+    public LivesView lives;
 }

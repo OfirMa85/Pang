@@ -3,7 +3,7 @@ public class PlayerIdleState : PlayerBaseState
     private readonly string stateName = "idle";
     public override void OnEnter(PlayerStateController player)
     {
-        player.app.view.player.ChangeAnimation(stateName);
+        player.app.view.player.anim.PlayAnimation(stateName);
     }
 
     public override void OnUpdate(PlayerStateController player)

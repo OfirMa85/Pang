@@ -8,4 +8,5 @@ public class PangModel : PangElement
     public GameModel game;
     public ScoreModel score;
     public MusicModel music;
+    public LivesModel lives;
 }

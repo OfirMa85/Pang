@@ -491,6 +491,7 @@ MonoBehaviour:
   menu: {fileID: 1552000269}
   levelComplete: {fileID: 0}
   score: {fileID: 0}
+  cameraShake: {fileID: 0}
 --- !u!1001 &108239775
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ public class PlayerMovingState : PlayerBaseState
     private readonly string stateName = "moving";
     public override void OnEnter(PlayerStateController player)
     {
-        player.app.view.player.ChangeAnimation(stateName);
+        player.app.view.player.anim.PlayAnimation(stateName);
     }
 
     public override void OnUpdate(PlayerStateController player)

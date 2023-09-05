@@ -18,4 +18,9 @@ public class PlayerAnimationView : PangElement
     {
         app.model.player.currentState.OnAnimationEnd(app.controller.player.state);
     }
+
+    public void ToggleInvincibility(bool invincible)
+    {
+        animator.SetBool("invincible", invincible);
+    }
 }

@@ -1,4 +1,4 @@
-public class PlayerAttacksController : PangElement
+public class AttacksController : PangElement
 {
     public void SpawnAttack()
     {

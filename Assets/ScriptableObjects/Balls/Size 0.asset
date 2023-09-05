@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   score: 5
+  shakeIntensity: 0.02
   next: {fileID: 0}
   verticalSpeed: 6
   horizontalSpeed: 2

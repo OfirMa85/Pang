@@ -1,9 +1,14 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : PangElement
 {
     public PlayerStateController state;
-    public PlayerAttacksController attacks;
+
+    private void Awake()
+    {
+        PlayerHitEvents.playerHitboxHitEvent.AddListener(OnHitboxHit);
+    }
 
     public void HandlePlayerMovement()
     {
@@ -36,8 +41,44 @@ public class PlayerController : PangElement
         }
         return false;
     }
-    public void InitializeAttack()
+
+    private void OnHitboxHit(Collider2D collider)
     {
-        attacks.SpawnAttack();
+        // check for invincibility
+        if (app.model.player.invincible)
+        {
+            return;
+        }
+        Debug.Log("Player got hit");
+
+        // toggle invisibility
+        ToggleInvincibility(true);
+        StartCoroutine(InvincibilityDelay());
+
+        // call event
+        PlayerHitEvents.playerHitEvent.Invoke();
+    }
+
+    private IEnumerator InvincibilityDelay()
+    {
+        // delay
+        yield return new WaitForSeconds(app.model.player.invincibilityDuration);
+
+        ToggleInvincibility(false);
+    }
+
+    private void ToggleInvincibility(bool toggle)
+    {
+        app.model.player.invincible = toggle;
+        app.view.player.anim.ToggleInvincibility(toggle);
+    }
+
+    public void CheckDeath()
+    {
+        if (app.model.lives.lives <= 0)
+        {
+            Debug.Log("Player died");
+            // player died
+        }
     }
 }

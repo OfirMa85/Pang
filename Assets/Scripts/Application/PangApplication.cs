@@ -7,8 +7,6 @@ public class PangApplication : MonoBehaviour
     public PangController controller;
 
     // TODO:
-    // player hit
-    // player health
     // lose screen
     // level prefabs
     // victory screen / leaderboards
@@ -25,6 +23,8 @@ public class PangApplication : MonoBehaviour
     // save and load volume settings
     // design the volume slider
     // make score text look better
+    // buffs
     // upgrades
     // 2 players
+    // add blocks that the balls can bounce off of
 }

@@ -7,6 +7,7 @@ public class BallScriptable : ScriptableObject
     [Header("Tier")]
     public int size;
     public int score;
+    public float shakeIntensity;
     public BallScriptable next;
 
     [Header("Speeds")]
