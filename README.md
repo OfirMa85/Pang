@@ -10,7 +10,7 @@ This is a submission for the Pang Game Unity Exercise.
 * **Custom soundtracks and SFX:** The game includes three distinct music themes and a variety of sound effects. The SFX incorporate random pitch variations for increased diversity, and the project includes an audio mixer for greater audio control.
 
 ## Repository Structure
-The repository contains all the necessary assets, scripts, scenes, and documentation required to run and understand the exercise. The relevant folders have been included, excluding unnecessary ones such as Temp/ and Library/.
+The repository contains all the necessary assets, scripts, scenes, and documentation required to run the project. The relevant folders have been included, excluding unnecessary ones such as Temp/ and Library/.
 
 ## Submission Links
 [Builds - Google Drive](https://drive.google.com/drive/folders/1JrJxeB2mmkh6pybGf-2tTUnOmNMMo1id?usp=sharing)
