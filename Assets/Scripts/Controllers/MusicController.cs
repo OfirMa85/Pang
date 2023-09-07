@@ -17,7 +17,7 @@ public class MusicController : PangElement
     {
         foreach (ThemeScriptable theme in themes)
         {
-            // add source
+            // add audio source
             AudioSource source = gameObject.AddComponent<AudioSource>();
             source.clip = theme.clip;
             source.volume = theme.volume;

@@ -3,12 +3,16 @@ using UnityEngine;
 public class BallModel: PangElement
 {
     [HideInInspector] public float directionSign;
-    public GameObject popPrefab;
     public BallScriptable scriptable;
+    public GameObject popPrefab;
 
-    public void Initialize(BallScriptable scriptable, int directionSign)
+    private void Awake()
     {
-        this.scriptable = scriptable;
-        this.directionSign = directionSign;
+        directionSign = RandomDirection();
+    }
+
+    private static int RandomDirection()
+    {
+        return (Random.Range(0, 2) * 2) - 1;
     }
 }

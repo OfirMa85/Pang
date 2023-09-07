@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class LoseView : MonoBehaviour
+public class WinView : PangElement
 {
     [SerializeField] private Animator animator;
 
     private void Start()
     {
-        GameEvents.gameLostEvent.AddListener(OnPlayerDeath);
+        GameEvents.gameWonEvent.AddListener(OnGameWon);
     }
 
-    private void OnPlayerDeath()
+    private void OnGameWon()
     {
         animator.SetBool("active", true);
     }

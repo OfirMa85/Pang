@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class InputController : PangElement
 {
-    [SerializeField] private InputModel model;
-
     private void Update()
     {
         CaptureInputs();
@@ -13,7 +11,7 @@ public class InputController : PangElement
     private void CaptureInputs()
     {
         // capture every item in the model dictionary
-        foreach (KeyValuePair<InputAction, string> entry in model.actionStrings)
+        foreach (KeyValuePair<InputAction, string> entry in app.model.input.actionStrings)
         {
             if (Input.GetButtonDown(entry.Value))
             {

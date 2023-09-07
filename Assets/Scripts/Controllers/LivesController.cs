@@ -26,6 +26,6 @@ public class LivesController : PangElement
 
         // player died
         Debug.Log("Player died");
-        PlayerHitEvents.playerDeathEvent.Invoke();
+        GameEvents.gameLostEvent.Invoke();
     }
 }

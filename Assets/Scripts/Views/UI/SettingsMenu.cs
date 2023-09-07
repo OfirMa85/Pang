@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class SettingsMenu : PangElement
 {
     public void BackButton()

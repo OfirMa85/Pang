@@ -22,27 +22,16 @@ public class BallsController : PangElement
         }
     }
 
-    public void SpawnBall(int size, int directionSign, Vector3 position)
+    public void SpawnBall(BallScriptable scriptable, int directionSign, Vector3 position)
     {
-        GameObject ball = Instantiate(app.model.balls.prefab, position, Quaternion.identity,app.model.balls.parent);
+        GameObject prefab = app.model.balls.prefab;
+        Transform parent = app.model.balls.parent;
+        GameObject ball = Instantiate(prefab, position, Quaternion.identity, parent);
 
-        BallController controller = ball.GetComponent<BallController>();
+        // update ball model
         BallModel model = ball.GetComponent<BallModel>();
-        BallView view = ball.GetComponent<BallView>();
-
-        // initialize ball components
-        try
-        {
-            model.Initialize(app.model.balls.scriptables[size], directionSign);
-        }
-        catch
-        {
-            Debug.LogError("Ball Scriptable Object is not defined correctly");
-            Destroy(ball);
-            return;
-        }
-        controller.Initialize();
-        view.Initialize();
+        model.scriptable = scriptable;
+        model.directionSign = directionSign;
     }
 
     private bool SplitBall(Vector3 position, BallScriptable scriptable)
@@ -55,13 +44,9 @@ public class BallsController : PangElement
         }
 
         // spawn smaller balls
-        SpawnBall(newScriptable.size, 1, position);
-        SpawnBall(newScriptable.size, -1, position);
+        SpawnBall(newScriptable, 1, position);
+        SpawnBall(newScriptable, -1, position);
 
         return true;
-    }
-    private int CalculateSizeAfterSplit(int size)
-    {
-        return size - 1;
     }
 }

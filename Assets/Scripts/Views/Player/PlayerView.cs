@@ -9,13 +9,14 @@ public class PlayerView : PangElement
 
     private void Start()
     {
-        PlayerHitEvents.playerDeathEvent.AddListener(OnDeath);
+        GameEvents.gameLostEvent.AddListener(OnGameEnded);
+        GameEvents.gameWonEvent.AddListener(OnGameEnded);
     }
 
     public void MovePlayer(Vector3 movementVectorNormal)
     {
         // calculate position
-        Vector3 movement = movementVectorNormal * app.model.player.speed * Time.deltaTime;
+        Vector3 movement = app.model.player.speed * Time.deltaTime * movementVectorNormal;
         Vector3 newPos = spriteObj.transform.position + movement;
         float newX = Mathf.Clamp(newPos.x, app.model.player.xBounds.x, app.model.player.xBounds.y);
         newPos = new Vector3(newX, newPos.y, newPos.z);
@@ -24,9 +25,7 @@ public class PlayerView : PangElement
         float yRotation = movementVectorNormal == Vector3.left ? 180 : 0;
         Quaternion newRotation = Quaternion.Euler(0f, yRotation, 0f);
 
-        // apply
-        spriteObj.transform.position = newPos;
-        spriteObj.transform.rotation = newRotation;
+        spriteObj.transform.SetPositionAndRotation(newPos, newRotation);
     }
 
     public Vector3 GetPosition()
@@ -34,7 +33,7 @@ public class PlayerView : PangElement
         return spriteObj.transform.position;
     }
 
-    public void OnDeath()
+    public void OnGameEnded()
     {
         Destroy(gameObject);
     }

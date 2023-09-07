@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class PauseModel : PangElement
 {
     public int pauseStack = 0;

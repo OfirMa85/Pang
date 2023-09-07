@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class PauseController : PangElement
 {
-    [SerializeField] private PauseModel model;
-
     private void Start()
     {
         InputEvents.inputDownEvent.AddListener(PauseUnpauseListener);
+
+        GameEvents.gameLostEvent.AddListener(OnGameEnded);
+        GameEvents.gameWonEvent.AddListener(OnGameEnded);
     }
 
     private void PauseUnpauseListener(InputAction action)
@@ -22,8 +23,8 @@ public class PauseController : PangElement
     public void PauseUnpause()
     {
         // swap pause state
-        model.isPauseScreenOn = !model.isPauseScreenOn;
-        if (model.isPauseScreenOn)
+        app.model.pause.isPauseScreenOn = !app.model.pause.isPauseScreenOn;
+        if (app.model.pause.isPauseScreenOn)
         {
             Pause();
         }
@@ -45,5 +46,15 @@ public class PauseController : PangElement
         app.controller.game.AddToPauseStack(-1);
         app.controller.music.Play(Theme.Game);
         PauseScreenEvent.pauseScreenEvent.Invoke(false);
+    }
+
+    private void OnGameEnded()
+    {
+        if (app.model.pause.isPauseScreenOn)
+        {
+            Unpause();
+        }
+
+        InputEvents.inputDownEvent.RemoveListener(PauseUnpauseListener);
     }
 }

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 22320567781410770}
   - component: {fileID: 7475793540178285299}
   - component: {fileID: 3650848371719589776}
-  - component: {fileID: 6367560022122689768}
   - component: {fileID: 6969054764708699521}
+  - component: {fileID: 6367560022122689768}
   - component: {fileID: 7666821150174259347}
   m_Layer: 0
   m_Name: ball
@@ -151,21 +151,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6367560022122689768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5207797982415379997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5942930db700e9e40b6b6197afa44e62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  app: {fileID: 0}
-  model: {fileID: 7666821150174259347}
-  sprite: {fileID: 22320567781410770}
 --- !u!114 &6969054764708699521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +167,21 @@ MonoBehaviour:
   model: {fileID: 7666821150174259347}
   rb: {fileID: 3650848371719589776}
   collider: {fileID: 7475793540178285299}
+--- !u!114 &6367560022122689768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5207797982415379997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5942930db700e9e40b6b6197afa44e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  app: {fileID: 0}
+  model: {fileID: 7666821150174259347}
+  sprite: {fileID: 22320567781410770}
 --- !u!114 &7666821150174259347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,5 +196,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   app: {fileID: 0}
   directionSign: 0
+  scriptable: {fileID: 11400000, guid: 9989a9d84fda7a54882d6db53f41ed1c, type: 2}
   popPrefab: {fileID: 1995822633886199511, guid: 5347e186d5060cb4eb899eb4cf6ddea2, type: 3}
-  scriptable: {fileID: 0}

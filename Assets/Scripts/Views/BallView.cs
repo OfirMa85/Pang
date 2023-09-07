@@ -6,7 +6,7 @@ public class BallView : PangElement
 
     [SerializeField] private SpriteRenderer sprite;
 
-    public void Initialize()
+    private void Start()
     {
         InitializeSprite();
     }

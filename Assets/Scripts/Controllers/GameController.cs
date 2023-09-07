@@ -1,12 +1,13 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameController : PangElement
 {
     private void Start()
     {
         InitializeGame();
-        PlayerHitEvents.playerDeathEvent.AddListener(OnPlayerDeath);
+
+        GameEvents.gameLostEvent.AddListener(OnGameEnded);
+        GameEvents.gameWonEvent.AddListener(OnGameEnded);
     }
 
     private void InitializeGame()
@@ -15,10 +16,8 @@ public class GameController : PangElement
         app.controller.music.Play(Theme.Game);
         // reset score
         app.controller.score.UpdateScore(0);
-        // initialize level 1
-        int level = 1;
-        app.model.game.level = level;
-        InitializeLevel(level);
+
+        app.controller.level.LoadLevel(1);
     }
 
     public void StartRound()
@@ -40,19 +39,10 @@ public class GameController : PangElement
 
     public void LevelComplete()
     {
-        app.model.game.level++;
-        InitializeLevel(app.model.game.level);
+        app.controller.level.NextLevel();
     }
 
-    private void InitializeLevel(int level)
-    {
-        AddToPauseStack(1);
-        app.view.countdown.StartCountdown();
-        app.controller.balls.SpawnBall(level, 1, Vector3.zero);
-        app.model.balls.CountBalls();
-    }
-
-    private void OnPlayerDeath()
+    private void OnGameEnded()
     {
         AddToPauseStack(1);
     }

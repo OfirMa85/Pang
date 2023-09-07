@@ -3,7 +3,6 @@ using UnityEngine;
 public class CountdownView : PangElement
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private GameController gameController;
 
     private void Start()
     {
@@ -22,7 +21,7 @@ public class CountdownView : PangElement
 
     public void CountdownGO()
     {
-        gameController.StartRound();
+        app.controller.game.StartRound();
     }
 
     public void AnimationEnd()

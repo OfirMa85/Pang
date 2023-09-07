@@ -9,7 +9,7 @@ public class BallController: PangElement
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private new CircleCollider2D collider;
 
-    public void Initialize()
+    private void Start()
     {
         InitializeHitbox();
         Boost();

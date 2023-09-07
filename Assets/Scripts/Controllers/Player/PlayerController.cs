@@ -23,6 +23,7 @@ public class PlayerController : PangElement
         {
             return;
         }
+
         // move player
         app.view.player.MovePlayer(Mathf.Sign(xAxis) * Vector3.right);
     }

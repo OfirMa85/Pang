@@ -6,7 +6,8 @@ public class PauseView : PangElement
 
     private void Start()
     {
-        PlayerHitEvents.playerDeathEvent.AddListener(OnPlayerDeath);
+        GameEvents.gameLostEvent.AddListener(OnGameEnded);
+        GameEvents.gameWonEvent.AddListener(OnGameEnded);
         PauseScreenEvent.pauseScreenEvent.AddListener(PauseUnpause);
     }
 
@@ -15,7 +16,7 @@ public class PauseView : PangElement
         animator.SetBool("active", pause);
     }
 
-    private void OnPlayerDeath()
+    private void OnGameEnded()
     {
         animator.SetBool("active", false);
     }
