@@ -9,8 +9,8 @@ public class BallsController : PangElement
 
     private void OnBallDestroy(Vector3 position, BallScriptable scriptable)
     {
-        int newBalls = SplitBall(position, scriptable) ? 1 : -1;
-        app.model.balls.activeBalls += newBalls;
+        app.model.balls.activeBalls--;
+        SplitBall(position, scriptable);
         CheckLevelComplete();
     }
 
@@ -32,6 +32,8 @@ public class BallsController : PangElement
         BallModel model = ball.GetComponent<BallModel>();
         model.scriptable = scriptable;
         model.directionSign = directionSign;
+
+        app.model.balls.activeBalls++;
     }
 
     private bool SplitBall(Vector3 position, BallScriptable scriptable)

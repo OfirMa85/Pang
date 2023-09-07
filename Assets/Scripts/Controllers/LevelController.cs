@@ -12,7 +12,6 @@ public class LevelController : PangElement
 
     public void LoadLevel(int level)
     {
-
         int levelIndex = level - 1;
         if (levelIndex >= app.model.level.levels.Length)
         {

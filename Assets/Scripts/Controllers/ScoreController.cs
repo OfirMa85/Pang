@@ -5,6 +5,7 @@ public class ScoreController : PangElement
     private void Start()
     {
         BallDestroyEvent.ballDestroyEvent?.AddListener(OnBallDestroy);
+        app.view.score.DisplayHighscore(ScoreModel.highscore);
     }
 
     private void OnBallDestroy(Vector3 pos, BallScriptable scriptable)
@@ -15,6 +16,12 @@ public class ScoreController : PangElement
     public void UpdateScore(int score)
     {
         app.model.score.score += score;
-        app.view.score.UpdateScore(app.model.score.scoreText, app.model.score.score);
+        UpdateHighscore();
+        app.view.score.UpdateScore(app.model.score.score, ScoreModel.highscore);
+    }
+
+    private void UpdateHighscore()
+    {
+        ScoreModel.highscore = Mathf.Max(ScoreModel.highscore, app.model.score.score);
     }
 }

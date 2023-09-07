@@ -13,6 +13,7 @@ public class PlayerAttackingState : PlayerBaseState
         // re-enter attack state
         if (player.app.controller.player.HandlePlayerAttacking())
         {
+            player.ChangeState(player.attackingState);
             return;
         }
         // change to idle

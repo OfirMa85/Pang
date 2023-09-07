@@ -7,9 +7,6 @@ public class PangApplication : MonoBehaviour
     public PangController controller;
 
     // TODO:
-    // fix mobile screen resolution issues
-    // mobile controls
-    // mobile pause button
     // highscore
 
 
@@ -18,6 +15,7 @@ public class PangApplication : MonoBehaviour
     // save and load leaderboards
     // save and load volume settings
     // design the volume slider
+    // toggle mobile extra pause button
     // make score text look better
     // buffs
     // upgrades

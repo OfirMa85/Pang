@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerStateController : PangElement
 {
     public PlayerIdleState idleState = new();

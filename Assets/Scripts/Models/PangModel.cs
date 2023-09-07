@@ -9,4 +9,5 @@ public class PangModel : PangElement
     public MusicModel music;
     public LivesModel lives;
     public LevelModel level;
+    public MobileModel mobile;
 }

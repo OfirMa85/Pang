@@ -41,6 +41,7 @@ public class InputModel : PangElement
     }
     public float GetAxis(Axis axis)
     {
-        return Input.GetAxisRaw(axis.ToUnityAxis());
+        return Input.GetAxisRaw(axis.ToUnityAxis())
+            + app.model.mobile.movement;
     }
 }

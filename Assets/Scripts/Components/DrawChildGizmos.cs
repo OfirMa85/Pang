@@ -2,6 +2,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 public class DrawChildGizmos : MonoBehaviour
 {
     private void OnDrawGizmos()
@@ -16,3 +17,4 @@ public class DrawChildGizmos : MonoBehaviour
         }
     }
 }
+#endif

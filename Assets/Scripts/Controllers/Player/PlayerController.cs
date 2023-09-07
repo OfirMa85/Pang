@@ -12,11 +12,6 @@ public class PlayerController : PangElement
 
     public void HandlePlayerMovement()
     {
-        if (app.model.pause.IsPaused())
-        {
-            return;
-        }
-
         // get x movement
         float xAxis = app.model.input.GetAxis(Axis.X);
         if (xAxis == 0)
@@ -30,11 +25,6 @@ public class PlayerController : PangElement
 
     public bool HandlePlayerAttacking()
     {
-        if (app.model.pause.IsPaused())
-        {
-            return false;
-        }
-
         if (app.model.input.GetActionPressed(InputAction.Attack))
         {
             state.ChangeState(state.attackingState);
