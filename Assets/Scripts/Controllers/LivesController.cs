@@ -10,8 +10,22 @@ public class LivesController : PangElement
 
     private void PlayerHit()
     {
+        // remove lives
         app.model.lives.lives -= 1;
-        app.controller.player.CheckDeath();
+        CheckDeath();
+        // invoke event
         app.view.lives.PlayerHit();
+    }
+
+    public void CheckDeath()
+    {
+        if (app.model.lives.lives > 0)
+        {
+            return;
+        }
+
+        // player died
+        Debug.Log("Player died");
+        PlayerHitEvents.playerDeathEvent.Invoke();
     }
 }

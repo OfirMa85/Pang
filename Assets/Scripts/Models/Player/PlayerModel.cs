@@ -7,6 +7,8 @@ public class PlayerModel : PangElement
     public GameObject fireballPrefab;
     public Transform attacksParent;
 
+    public Rigidbody2D rb;
+
     public bool drawBounds;
     public Vector2 xBounds;
     public float speed;

@@ -7,15 +7,12 @@ public class PangApplication : MonoBehaviour
     public PangController controller;
 
     // TODO:
-    // lose screen
     // level prefabs
     // victory screen / leaderboards
     // mobile controls
     // mobile pause button
-    // resume + give up buttons in pause menu
     // remove unnecessary references to follow MVC better
     // fix mobile screen resolution issues
-    // fix level complete appearing on the screen on higher resolution
 
 
     // OPTIONAL:
@@ -27,4 +24,5 @@ public class PangApplication : MonoBehaviour
     // upgrades
     // 2 players
     // add blocks that the balls can bounce off of
+    // player hit effect VFX
 }

@@ -72,13 +72,4 @@ public class PlayerController : PangElement
         app.model.player.invincible = toggle;
         app.view.player.anim.ToggleInvincibility(toggle);
     }
-
-    public void CheckDeath()
-    {
-        if (app.model.lives.lives <= 0)
-        {
-            Debug.Log("Player died");
-            // player died
-        }
-    }
 }

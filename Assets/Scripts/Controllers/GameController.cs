@@ -6,6 +6,7 @@ public class GameController : PangElement
     private void Start()
     {
         InitializeGame();
+        PlayerHitEvents.playerDeathEvent.AddListener(OnPlayerDeath);
     }
 
     private void InitializeGame()
@@ -49,5 +50,10 @@ public class GameController : PangElement
         app.view.countdown.StartCountdown();
         app.controller.balls.SpawnBall(level, 1, Vector3.zero);
         app.model.balls.CountBalls();
+    }
+
+    private void OnPlayerDeath()
+    {
+        AddToPauseStack(1);
     }
 }

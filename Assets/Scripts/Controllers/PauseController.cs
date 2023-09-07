@@ -19,7 +19,7 @@ public class PauseController : PangElement
         PauseUnpause();
     }
 
-    private void PauseUnpause()
+    public void PauseUnpause()
     {
         // swap pause state
         model.isPauseScreenOn = !model.isPauseScreenOn;

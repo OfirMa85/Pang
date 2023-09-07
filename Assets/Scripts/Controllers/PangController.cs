@@ -10,4 +10,5 @@ public class PangController : PangElement
     public ScoreController score;
     public MusicController music;
     public LivesController lives;
+    public SceneController scene;
 }

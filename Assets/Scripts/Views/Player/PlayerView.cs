@@ -7,6 +7,11 @@ public class PlayerView : PangElement
 
     [SerializeField] private GameObject spriteObj;
 
+    private void Start()
+    {
+        PlayerHitEvents.playerDeathEvent.AddListener(OnDeath);
+    }
+
     public void MovePlayer(Vector3 movementVectorNormal)
     {
         // calculate position
@@ -27,5 +32,10 @@ public class PlayerView : PangElement
     public Vector3 GetPosition()
     {
         return spriteObj.transform.position;
+    }
+
+    public void OnDeath()
+    {
+        Destroy(gameObject);
     }
 }
